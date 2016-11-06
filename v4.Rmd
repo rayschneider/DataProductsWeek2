@@ -1,0 +1,28 @@
+---
+title: "Natural Wonders of the World"
+author: "Raymond Schneider"
+date: "November 6, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, comment=""}
+library(leaflet)
+natWonders <- data.frame(
+  name = c("Great Barrier Reef","Grand Canyon","Paricutin","Aurora Borealis","Victoria Falls","Harbor of Rio de Janeiro (Guanabara Bay)","Mount Everest"),
+  lat = c(-18.2871,36.1128,19.4933,89.9999,-17.9244,-22.9707,27.9878),
+  lng = c(147.6992,-113.9961,-102.2514,0,25.8559,-43.1823,86.9250)
+)
+
+map <- leaflet() %>% 
+  addTiles()  %>% 
+  addMarkers(data = natWonders, lat=natWonders$lat, lng=natWonders$lng, popup=natWonders$name, group="Natural Wonders")
+
+map
+
+```
+The Aruroa kind of throws the map off.  Still working on some more stuff (layers for ancient/modern wonders), but out of time for this round of assignments! 
